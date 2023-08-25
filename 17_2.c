@@ -14,7 +14,7 @@ int main(int argc,char* argv[])
 	struct flock lock;
 	int fd;
 	fd = open("db", O_RDWR);
-	//read lock
+	//write lock
 	lock.l_type = F_WRLCK;
 	lock.l_whence = SEEK_SET;
 	//perform mandatory locking 
