@@ -7,7 +7,7 @@ Date: 8th Sept, 2023.
 ============================================================================
 */
 
-Write a program to display the environmental variable of the user (use environ).
+
 #include <unistd.h>
 #include <stdio.h>
 
