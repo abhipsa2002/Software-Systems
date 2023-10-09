@@ -2,7 +2,7 @@
 #define FACULTY
 #include "courses.h"
 struct faculty{
-	int sno;
+	int id;
 	int usrname;
 	char name[50];
 	int age;

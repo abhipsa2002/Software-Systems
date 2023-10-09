@@ -9,7 +9,7 @@
 #include<strings.h>
 #include<string.h>
 
-int opt,currUser;
+int opt,currid;
 
 void selectopt(int sd){
 	printf("1 : FACULTY  \n");
@@ -164,6 +164,118 @@ void disp_menu(int sd){
 	}
 }
 
+//FACULTY LOGIN
+void FacultyLogin(int sd){
+	bool res;
+	struct faculty curr;
+	printf("User ID : ");
+	scanf("%d",&curr.id);
+	currid=curr.id;
+	printf("Password : ");
+	char* pass = getpass("");
+	strcpy(curr.password, pass);
+
+	getchar(); //wait till user presses enter
+	write(sd,&opt,sizeof(int)); //pass to server
+	write(sd,&currUser,sizeof(struct faculty)); //pass to server
+
+	read(sd,&res,sizeof(res)); //wait for server to do the password matching and save the return value in 'res' variable
+
+	if(!res){			
+		printf("Invalid password or userid \n");
+		printf("TRY AGAIN !!! \n");
+		selectopt(sd);
+	}
+	else{
+		printf("Logged in!!!\n");
+	}
+}
+
+//STUDENT LOGIN
+
+void StudentLogin(int sd){
+	bool res;
+	struct student curr;
+	printf("User ID : ");
+	scanf("%d",&curr.id);
+	currid=curr.id;
+	printf("Password : ");
+	char* pass = getpass("");
+	strcpy(curr.password, pass);
+
+	getchar(); //wait till user presses enter
+	write(sd,&opt,sizeof(int));  //pass to server
+	write(sd,&currUser,sizeof(struct student)); //pass to server
+
+	read(sd,&res,sizeof(res)); //wait for server to do the password matching and save the return value in 'res' variable
+
+	if(!res){
+		printf("Invalid password or userid \n");
+		printf("TRY AGAIN !!! \n");
+		selectopt(sd);
+	}
+	else{
+		printf("Logged in!!!\n");
+	}
+}
+
+//ADMIN LOGIN
+
+void AdminLogin(int sd){
+	bool res;
+	struct admin curr;
+	printf("User ID : ");
+	scanf("%d",&curr.id);
+	currid=curr.id;
+	printf("Password : ");
+	char* pass = getpass("");
+	strcpy(curr.password, pass);
+	getchar(); //wait till user presses enter
+	write(sd,&opt,sizeof(int));  //pass to server
+	write(sd,&currUser,sizeof(struct admin)); //pass to server
+
+	read(sd,&res,sizeof(res)); //wait for server to do the password matching and save the return value in 'res' variable
+
+	if(!res){
+		printf("Invalid password or userid \n");
+		printf("TRY AGAIN !!! \n");
+		selectopt(sd);
+	}
+	else{
+		printf("Logged in!!!\n");
+	}
+}
+
+void change_password(int sd){
+	int select;
+	if(opt==1) select=4;
+	if(opt==2) select=5;
+	if(opt==3) select=9;
+	char old_pass[10];
+	char new_pass[10];
+	bool res;
+
+	printf("Enter your current password : ");
+	char* pass = getpass("");
+        strcpy(old_pass, pass);
+
+	//to the server
+	write(sd,&select,sizeof(int));
+	write(sd,old_pass,sizeof(old_pass));
+	printf("Enter the new password(max 10 characters) : ");
+	pass = getpass("");
+        strcpy(new_pass, pass);
+	write(sd,new_pass,sizeof(new_pass));
+
+	read(sd,&res,sizeof(res));
+	if(!result){
+		printf("Error changing your password! \n");
+	}
+	else{
+		printf("Succesfully changed your password! \n");
+	}
+	disp_menu(sd);
+}
 
 int main(){
 	printf("WELCOME TO COURSE MANAGEMENT SYSTEM ");

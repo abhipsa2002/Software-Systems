@@ -2,7 +2,7 @@
 #define ADMIN
 
 struct admin{
-	int sno;
+	int id;
 	int usrname;
 	char password[10];
 };
