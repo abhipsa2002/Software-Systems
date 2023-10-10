@@ -1,8 +1,16 @@
-//30. Write a program to create a shared memory.
-// a. write some data to the shared memory
-// b. attach with O_RDONLY and check whether you are able to overwrite.
-// c. detach the shared memory
-// d. remove the shared memory
+/*
+============================================================================
+Name : 30.c
+Author : Abhipsa Panda
+Description : 30. Write a program to create a shared memory.
+ 	a. write some data to the shared memory
+ 	b. attach with O_RDONLY and check whether you are able to overwrite.
+	c. detach the shared memory
+	d. remove the shared memory
+
+Date: 8th Oct,2023
+============================================================================
+*/
 
 #include <sys/types.h> 
 #include <sys/ipc.h>   
@@ -18,11 +26,12 @@ int main()
 	 data=shmat(id, (void *)0, 0);
 	 printf("Enter data to write to shared memory \n");
 	 scanf("%[^\n]",data);
-	 printf("Reading from the shared file: \n");
-	 //data = shmat(sId, (void *)0, SHM_RDONLY);
+	 printf("Press enter to read from the shared memory ");
+    	 getchar();
+    	 getchar();
+	 data = shmat(sId, (void *)0, SHM_RDONLY);
 	 printf("%s\n",data);
-	 printf("Enter to delete shared memory");
-	 getchar();
+	 printf("Press enter to delete shared memory");
 	 getchar();
 	 shmdt(data);
 	 shmctl(id , IPC_RMID, NULL);

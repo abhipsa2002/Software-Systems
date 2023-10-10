@@ -1,6 +1,13 @@
-/*27. Write a program to receive messages from the message queue.
-a. with 0 as a flag
-b. with IPC_NOWAIT as a flag*/
+/*
+============================================================================
+Name : 27b.c
+Author : Abhipsa Panda
+Description : Write a program to receive messages from the message queue.
+	a. with 0 as a flag
+	b. with IPC_NOWAIT as a flag
+Date: 8th Oct,2023
+============================================================================
+*/
 
 #include <sys/types.h> 
 #include <sys/ipc.h>   
@@ -19,7 +26,7 @@ key_t key = ftok(".",'a');
 int id = msgget(key,0);
 printf("Enter message type to retrive: ");
 scanf("%ld", &mq.m_type);
-int ret = msgrcv(id, &mq, sizeof(mq.message), mq.m_type,0);
+int ret = msgrcv(id, &mq, sizeof(mq.message), mq.m_type,IPC_NOWAIT);
 if (ret == -1)
 	{
 	perror("not found");
@@ -28,5 +35,3 @@ if (ret == -1)
 printf("Message type: %ld\n Message: %s\n", mq.m_type, mq.message);
 return 0;
 }
-
-//run gcc 26.c and enter the msg of required mgstype 

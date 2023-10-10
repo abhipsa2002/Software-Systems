@@ -1,3 +1,13 @@
+/*
+============================================================================
+Name : 15.c
+Author : Abhipsa Panda
+Description :Write a simple program to send some data from parent to the child process.
+Date: 8th Oct,2023
+============================================================================
+*/
+
+
 #include<unistd.h>
 #include<stdio.h>
 

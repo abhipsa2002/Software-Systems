@@ -1,5 +1,12 @@
-//29. Write a program to remove the message queue
 
+/*
+============================================================================
+Name : 29.c
+Author : Abhipsa Panda
+Description : Write a program to remove the message queue.
+Date: 8th Oct,2023
+============================================================================
+*/
 #include <sys/types.h> 
 #include <sys/ipc.h>   
 #include <sys/msg.h>   

@@ -1,3 +1,12 @@
+/*
+============================================================================
+Name : 21b.c
+Author : Abhipsa Panda
+Description : Write two programs so that both can communicate by FIFO - Use two way communication.
+Date: 8th Oct,2023
+============================================================================
+*/
+
 #include<unistd.h>
 #include<stdio.h>
 #include <sys/types.h>

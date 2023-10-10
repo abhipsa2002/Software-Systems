@@ -1,3 +1,13 @@
+/*
+============================================================================
+Name : 22a.c
+Author : Abhipsa Panda
+Description : Write a program to wait for data to be written into FIFO within 10 seconds, use select
+	      system call with FIFO.
+Date: 8th Oct,2023
+============================================================================
+*/
+
 #include<unistd.h>
 #include<stdio.h>
 #include <sys/types.h>
