@@ -1,0 +1,16 @@
+#ifndef STUDENT
+#define STUDENT
+#include "courses.h"
+struct student{
+	int id; //like record number, it'll be useful while record locking
+        int rollno;
+        char name[50];
+        int age;
+        char email[50];
+        char address[100];
+        char password[10];
+        char status[20];
+        struct course c[4]; //A student is allowed to take atmax 4 courses per semester
+};
+
+#endif
